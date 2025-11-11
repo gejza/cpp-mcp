@@ -14,6 +14,8 @@ add_library(${TARGET} STATIC
     ../include/mcp_stdio_client.h
     mcp_sse_client.cpp
     ../include/mcp_sse_client.h
+    mcp_reverse_client.cpp
+    ../include/mcp_reverse_client.h
 )
 
 target_link_libraries(${TARGET} PUBLIC ${CMAKE_THREAD_LIBS_INIT})

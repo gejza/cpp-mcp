@@ -327,6 +327,35 @@ public:
      */
     bool set_mount_point(const std::string& mount_point, const std::string& dir, httplib::Headers headers = httplib::Headers());
 
+    /**
+     * @brief Process a request manually (for reverse proxy mode)
+     * @param req The request to process
+     * @param session_id The session ID
+     * @return The response JSON
+     * @note This method exposes the internal request processing logic for use in reverse proxy scenarios
+     */
+    json process_request_public(const request& req, const std::string& session_id) {
+        return process_request(req, session_id);
+    }
+
+    /**
+     * @brief Check if a session is initialized (for reverse proxy mode)
+     * @param session_id The session ID to check
+     * @return True if the session is initialized
+     */
+    bool is_session_initialized_public(const std::string& session_id) const {
+        return is_session_initialized(session_id);
+    }
+
+    /**
+     * @brief Set session initialization status (for reverse proxy mode)
+     * @param session_id The session ID
+     * @param initialized The initialization status
+     */
+    void set_session_initialized_public(const std::string& session_id, bool initialized) {
+        set_session_initialized(session_id, initialized);
+    }
+
 private:
     std::string host_;
     int port_;
